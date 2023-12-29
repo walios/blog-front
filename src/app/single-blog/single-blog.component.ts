@@ -66,7 +66,7 @@ export class SingleBlogComponent {
     const url = this.router.url;
     if (url === '/') {
       this.http
-        .get<any[]>('http://localhost:8222/api/blogs/blog')
+        .get<any[]>('http://localhost:8222/api/blogs/blog/top5')
         .pipe(
           switchMap((blogs) => {
             this.blogs = blogs;
@@ -151,7 +151,8 @@ export class SingleBlogComponent {
               lastname: response.lastname
             };
           });
-          console.log("🚀 ~ file: single-blog.component.ts ~ SingleBlogComponent ~ commentResponses.forEach ~ blogs:", this.blogs)
+          console.log(this.blogs);
+
         });
     }
   }
@@ -164,11 +165,19 @@ export class SingleBlogComponent {
     };
 
     this.http.post('http://localhost:8222/api/social/comment', data).subscribe(response => {
-      console.log(response);
+
+    location.reload();
     }, error => {
       console.log(error);
     });
   }
+
+  likeComment(userId: number, commentId: number) {
+    this.http.post(`http://localhost:8222/api/social/like/toggle/${userId}/${commentId}`, {}).subscribe(() => {
+      location.reload();
+    });
+  }
+
   getRandomNumber(): number {
     return Math.floor(Math.random() * 100); // generates a random number between 0 and 99
   }

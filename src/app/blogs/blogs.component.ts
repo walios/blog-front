@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Inject } from '@angular/core';
@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './blogs.component.css',
 })
 export class BlogsComponent {
+
   cities: any[] = [];
   categories: any[] = [];
   blogForm: FormGroup;
@@ -103,7 +104,9 @@ export class BlogsComponent {
     this.http
       .post('http://localhost:8222/api/blogs/blog', formData)
       .subscribe((response) => {
-        console.log(response);
+        location.reload();
       });
   }
+
+
 }

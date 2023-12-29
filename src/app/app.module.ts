@@ -15,6 +15,7 @@ import { CategoryCrudComponent } from './category-crud/category-crud.component';
 import { CitiesComponent } from './cities/cities.component';
 import { CityCrudComponent } from './city-crud/city-crud.component';
 import { MarkdownModule } from 'ngx-markdown';
+
 @NgModule({
   declarations: [
     AppComponent,

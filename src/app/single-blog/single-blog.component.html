@@ -52,8 +52,8 @@
             <h2
               class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white"
             >
-              Discussion ({{ getRandomNumber() }})
-            </h2>
+            Discussion ({{ blog.id }})
+                      </h2>
           </div>
           <form class="mb-6" (submit)="postComment(blog.id, comment.value)">
             <div
@@ -92,14 +92,7 @@
                   />{{ comment.user.firstname }} {{ comment.user.lastname }}
                 </p>
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                  <time
-                    pubdate
-                    [attr.datetime]="getRandomDate()"
-                    title="{{ getRandomDate() }}"
-                  >
-                    > {{ getRandomDate() }}</time
-                  >
-                </p>
+                  > &nbsp;{{ blog.title}}                </p>
               </div>
               <button
                 id="dropdownComment1Button"
@@ -158,6 +151,7 @@
             </p>
             <div class="flex items-center mt-4 space-x-4">
               <button
+              (click)="likeComment(user.id, comment.id)"
                 type="button"
                 class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >

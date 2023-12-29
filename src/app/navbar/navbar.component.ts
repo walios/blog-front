@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { FormControl } from '@angular/forms';
@@ -9,12 +9,17 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  imageMin: File | null = null;
   email = new FormControl('');
   password = new FormControl('');
   firstname = new FormControl('');
   lastname = new FormControl('');
   registerEmail = new FormControl('');
   registerPassword = new FormControl('');
+  updateEmail = new FormControl('');
+  updateFirstname = new FormControl('');
+  updateLastname = new FormControl('');
+  updateProfilePicture = new FormControl('');
   hasToken: boolean = false;
   user: any = {};
   tokens: any = {};
@@ -92,5 +97,30 @@ export class NavbarComponent implements OnInit {
         this.cookieService.delete('refreshToken');
         location.reload();
       });
+  }
+
+  onFileChange(event: any) {
+    this.user.profilePicture = event.target.files[0];
+    this.imageMin = null;
+    const fr = new FileReader();
+    fr.onload = (evento: any) => {
+      this.imageMin = evento.target.result;
+    };
+    if (this.user.profilePicture) {
+      fr.readAsDataURL(this.user.profilePicture);
+      console.log(this.user.profilePicture);
+    }
+  }
+
+
+  onUpload(): void {
+    const formData = new FormData();
+    formData.append('user', new Blob([JSON.stringify(this.user)], {type: 'application/json'}));
+    formData.append('multipartFile', this.user.profilePicture);
+    if (this.user.profilePicture) {
+      this.http.post('http://localhost:8222/api/auth/user/updateProfile', formData).subscribe(() => {
+        location.reload();
+      });
+    }
   }
 }

@@ -102,8 +102,8 @@ export class BlogsComponent {
     formData.city = { id: formData.city };
     formData.category = { id: formData.category };
     this.http
-      .post('http://localhost:8222/api/blogs/blog', formData)
-      .subscribe((response) => {
+      .post('http://localhost:8222/api/main/taux/save', formData)
+      .subscribe((response: any) => { 
         location.reload();
       });
   }

@@ -52,8 +52,8 @@
             <h2
               class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white"
             >
-            Discussion ({{ blog.id }})
-                      </h2>
+              Discussion ({{ blog.id }})
+            </h2>
           </div>
           <form class="mb-6" (submit)="postComment(blog.id, comment.value)">
             <div
@@ -92,7 +92,8 @@
                   />{{ comment.user.firstname }} {{ comment.user.lastname }}
                 </p>
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                  > &nbsp;{{ blog.title}}                </p>
+                  > &nbsp;{{ blog.title }}
+                </p>
               </div>
               <button
                 id="dropdownComment1Button"
@@ -151,7 +152,7 @@
             </p>
             <div class="flex items-center mt-4 space-x-4">
               <button
-              (click)="likeComment(user.id, comment.id)"
+                (click)="likeComment(user.id, comment.id)"
                 type="button"
                 class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
@@ -164,7 +165,7 @@
                 <div
                   class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900"
                 >
-                {{comment.likes.length}}
+                  {{ comment.likes.length }}
                 </div>
               </button>
             </div>

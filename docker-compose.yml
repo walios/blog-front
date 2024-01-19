@@ -1,0 +1,13 @@
+services:
+  front:
+    container_name: font
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    networks:
+      - config-server_net-bridge
+networks:
+  config-server_net-bridge:
+    external: true

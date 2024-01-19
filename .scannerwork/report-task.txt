@@ -1,0 +1,7 @@
+organization=f-amine
+projectKey=f-amine_blog-front
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.51767
+dashboardUrl=https://sonarcloud.io/dashboard?id=f-amine_blog-front
+ceTaskId=AYy3FO8d4bT-Tn4kKDLD
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYy3FO8d4bT-Tn4kKDLD

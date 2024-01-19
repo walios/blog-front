@@ -57,8 +57,9 @@ export class SingleBlogComponent {
         });
 
       this.cdr.detectChanges();
-    }
-  }
+    }else{
+    this.getBlogs();
+  }}
 
 
   
